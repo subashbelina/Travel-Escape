@@ -3,16 +3,18 @@ const initMobileMenu = () => {
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelector('.nav-links');
     
-    // Create mobile menu button
-    const mobileMenuBtn = document.createElement('button');
-    mobileMenuBtn.classList.add('mobile-menu-btn');
-    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-    
-    // Add button to navbar
-    navbar.insertBefore(mobileMenuBtn, navLinks);
+    // Create mobile menu button if it doesn't exist
+    let mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    if (!mobileMenuBtn) {
+        mobileMenuBtn = document.createElement('button');
+        mobileMenuBtn.classList.add('mobile-menu-btn');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        navbar.insertBefore(mobileMenuBtn, navLinks);
+    }
     
     // Toggle menu on click
-    mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         navLinks.classList.toggle('show');
         mobileMenuBtn.innerHTML = navLinks.classList.contains('show') 
             ? '<i class="fas fa-times"></i>' 
@@ -25,6 +27,14 @@ const initMobileMenu = () => {
             navLinks.classList.remove('show');
             mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
         }
+    });
+
+    // Close menu when clicking a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
     });
 };
 
