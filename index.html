@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover amazing travel destinations with TravelEscape. Get personalized travel recommendations for beaches, temples, and country adventures.">
+    <meta http-equiv="Cache-Control" content="max-age=31536000">
+    <meta http-equiv="Expires" content="31536000">
+    <title>TravelEscape - Your Journey Begins Here</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="images/hero1.jpg" as="image" type="image/jpeg" fetchpriority="high">
+    <link rel="preload" href="images/logo/logo.jpg" as="image" type="image/jpeg">
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img src="images/logo/logo.jpg" alt="TravelEscape Logo" class="logo-img">
+            <span>TravelEscape</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Next Adventure</h1>
+            <p>Explore the world's most beautiful destinations with our expert travel recommendations</p>
+            <a href="#destinations" class="btn">Explore Destinations</a>
+        </div>
+    </section>
+
+    <!-- Destinations Section -->
+    <section id="destinations" class="destinations">
+        <div class="section-title">
+            <h2>Popular Destinations</h2>
+            <p>Discover our handpicked selection of amazing places to visit</p>
+        </div>
+        
+        <!-- Beach Recommendations -->
+        <div class="destination-category">
+            <h3>Beach Getaways</h3>
+            <div class="destination-grid">
+                <div class="destination-card animate-on-scroll">
+                    <img src="images/beaches/beach1.jpg" alt="Tropical Paradise Beach" class="destination-image" data-src="images/beaches/beach1.jpg">
+                    <div class="destination-info">
+                        <h3>Maldives Paradise</h3>
+                        <p>Experience crystal clear turquoise waters and pristine white sandy beaches in this tropical paradise. Perfect for snorkeling, diving, and romantic getaways.</p>
+                    </div>
+                </div>
+                <div class="destination-card animate-on-scroll">
+                    <img src="images/beaches/beach2.jpg" alt="Coastal Beach" class="destination-image" data-src="images/beaches/beach2.jpg">
+                    <div class="destination-info">
+                        <h3>Bali Coast</h3>
+                        <p>Discover the perfect blend of culture and beach life in beautiful Bali. From surfing spots to hidden coves, Bali offers diverse beach experiences.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Country Recommendations -->
+        <div class="destination-category">
+            <h3>Country Adventures</h3>
+            <div class="destination-grid">
+                <div class="destination-card animate-on-scroll">
+                    <img src="images/countries/country1.jpg" alt="Swiss Alps Landscape" class="destination-image" data-src="images/countries/country1.jpg">
+                    <div class="destination-info">
+                        <h3>Swiss Alps</h3>
+                        <p>Experience the breathtaking beauty of the Swiss countryside with its majestic mountains, pristine lakes, and charming villages. Perfect for hiking, skiing, and nature photography.</p>
+                    </div>
+                </div>
+                <div class="destination-card animate-on-scroll">
+                    <img src="images/countries/country2.jpg" alt="New Zealand Landscape" class="destination-image" data-src="images/countries/country2.jpg">
+                    <div class="destination-info">
+                        <h3>New Zealand</h3>
+                        <p>Discover the stunning landscapes of Middle Earth, from rolling green hills to dramatic fjords. A paradise for adventure seekers and nature lovers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Temple Recommendations -->
+        <div class="destination-category">
+            <h3>Cultural Temples</h3>
+            <div class="destination-grid">
+                <div class="destination-card animate-on-scroll">
+                    <img src="images/temples/temple1.jpg" alt="Angkor Wat Temple" class="destination-image" data-src="images/temples/temple1.jpg">
+                    <div class="destination-info">
+                        <h3>Angkor Wat, Cambodia</h3>
+                        <p>Explore the magnificent ancient temples of Cambodia, a UNESCO World Heritage site. Marvel at the intricate carvings and architectural wonders of the Khmer Empire.</p>
+                    </div>
+                </div>
+                <div class="destination-card animate-on-scroll">
+                    <img src="images/temples/temple2.jpg" alt="Japanese Temple" class="destination-image" data-src="images/temples/temple2.jpg">
+                    <div class="destination-info">
+                        <h3>Kyoto Temples, Japan</h3>
+                        <p>Immerse yourself in the rich cultural heritage of Japan through its ancient temples and shrines. Experience the perfect harmony of nature and architecture.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>Your trusted travel companion</p>
+        </div>
+        <div class="about-content">
+            <p>We are passionate about travel and helping people discover amazing destinations around the world. Our team of experienced travelers and local experts work together to provide you with the best travel recommendations and insights.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us for personalized travel recommendations</p>
+        </div>
+        <div class="contact-container">
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+
+            <!-- Find Us Section -->
+            <div class="find-us">
+                <h3>Find Us</h3>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Our Location</h4>
+                            <p>123 Travel Street, Adventure City, AC 12345</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone Number</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Address</h4>
+                            <p>info@traveleescape.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            <p>Saturday: 10:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" title="Follow us on Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Follow us on Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Follow us on Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link" title="Follow us on LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>TravelEscape</h3>
+                <p>Your journey begins here. We're dedicated to making your travel dreams come true with personalized recommendations and expert guidance.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section newsletter">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for travel tips and exclusive offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn">Subscribe</button>
+                </form>
+            </div>
+            <div class="footer-section contact">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Travel Street, Adventure City</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope"></i> info@traveleescape.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TravelEscape. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
