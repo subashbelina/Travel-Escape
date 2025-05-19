@@ -158,7 +158,7 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('../images/hero1.jpg') center/cover;
+                url('/Travel-Escape/images/hero1.jpg') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
