@@ -32,6 +32,32 @@
             <li><a href="#about">About Us</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <div class="search-container">
+            <button class="search-btn" id="searchBtn">
+                <i class="fas fa-search"></i>
+            </button>
+            <div class="search-overlay" id="searchOverlay">
+                <div class="search-content">
+                    <div class="search-header">
+                        <h3>Search Destinations</h3>
+                        <button class="close-search" id="closeSearch">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form class="search-form" id="searchForm">
+                        <div class="search-input-group">
+                            <input type="text" id="searchInput" placeholder="Search for destinations, activities, or experiences..." autocomplete="off">
+                            <button type="submit" class="search-submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="search-results" id="searchResults">
+                        <!-- Search results will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->

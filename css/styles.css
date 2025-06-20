@@ -137,6 +137,210 @@ body {
     width: 80%;
 }
 
+/* Search Button and Overlay Styles */
+.search-container {
+    position: relative;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.search-btn:hover {
+    background-color: var(--light-gray);
+    color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.search-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.search-content {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.search-overlay.active .search-content {
+    transform: translateY(0);
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--light-gray);
+}
+
+.search-header h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.close-search {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-search:hover {
+    background-color: var(--light-gray);
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.search-form {
+    margin-bottom: 1.5rem;
+}
+
+.search-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: var(--white);
+}
+
+#searchInput:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.search-submit {
+    position: absolute;
+    right: 0.5rem;
+    background: var(--secondary-color);
+    border: none;
+    color: var(--white);
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-submit:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.search-results {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.search-result-item {
+    padding: 1rem;
+    border: 1px solid var(--light-gray);
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-result-item:hover {
+    background: var(--light-gray);
+    border-color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+.search-result-item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.search-result-info h4 {
+    color: var(--primary-color);
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+}
+
+.search-result-info p {
+    color: var(--text-color);
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.no-results i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--light-gray);
+}
+
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -159,7 +363,7 @@ body {
 .hero {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                url('/Travel-Escape/images/hero1.jpg') center/cover;
+                url('../images/hero1.jpg') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -337,13 +541,11 @@ body {
 /* Media Queries */
 @media (max-width: 768px) {
     .navbar {
-        padding: 1rem 5%;
+        padding: 1rem 3%;
     }
 
     .mobile-menu-btn {
         display: block;
-        position: relative;
-        z-index: 1001;
     }
 
     .logo-img {
@@ -358,35 +560,29 @@ body {
     .nav-links {
         position: fixed;
         top: 0;
-        left: 0;
-        width: 100%;
+        right: -100%;
+        width: 70%;
         height: 100vh;
         background: var(--white);
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-        padding: 80px 0 2rem 0;
-        gap: 1.5rem;
-        transform: translateX(-100%);
-        opacity: 0;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 999;
     }
 
     .nav-links.show {
-        transform: translateX(0);
-        opacity: 1;
+        right: 0;
     }
 
     .nav-links a {
-        padding: 1rem 2rem;
-        width: 100%;
-        text-align: center;
-        font-size: 1.2rem;
+        margin: 1rem 0;
+        font-size: 1.1rem;
     }
 
     .nav-links a:hover {
-        background-color: var(--light-gray);
+        background: var(--light-gray);
     }
 
     .hero h1 {
@@ -403,6 +599,35 @@ body {
 
     .destination-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Search responsive styles */
+    .search-content {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .search-header h3 {
+        font-size: 1.3rem;
+    }
+
+    #searchInput {
+        padding: 0.8rem 2.5rem 0.8rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .search-submit {
+        padding: 0.6rem;
+    }
+
+    .search-result-item {
+        padding: 0.8rem;
+    }
+
+    .search-result-item img {
+        width: 50px;
+        height: 50px;
     }
 }
 

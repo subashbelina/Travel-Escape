@@ -210,6 +210,178 @@ const initScrollAnimations = () => {
     elements.forEach(element => observer.observe(element));
 };
 
+// Search functionality
+const initSearch = () => {
+    const searchBtn = document.getElementById('searchBtn');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const closeSearch = document.getElementById('closeSearch');
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('searchInput');
+    const searchResults = document.getElementById('searchResults');
+
+    // Sample destination data for search
+    const destinations = [
+        {
+            name: 'Maldives Paradise',
+            category: 'Beach Getaways',
+            description: 'Experience crystal clear turquoise waters and pristine white sandy beaches in this tropical paradise.',
+            image: 'images/beaches/beach1.jpg',
+            type: 'beach'
+        },
+        {
+            name: 'Bali Coast',
+            category: 'Beach Getaways',
+            description: 'Discover the perfect blend of culture and beach life in beautiful Bali.',
+            image: 'images/beaches/beach2.jpg',
+            type: 'beach'
+        },
+        {
+            name: 'Swiss Alps',
+            category: 'Country Adventures',
+            description: 'Experience the breathtaking beauty of the Swiss countryside with its majestic mountains.',
+            image: 'images/countries/country1.jpg',
+            type: 'country'
+        },
+        {
+            name: 'New Zealand',
+            category: 'Country Adventures',
+            description: 'Discover the stunning landscapes of Middle Earth, from rolling green hills to dramatic fjords.',
+            image: 'images/countries/country2.jpg',
+            type: 'country'
+        },
+        {
+            name: 'Angkor Wat, Cambodia',
+            category: 'Cultural Temples',
+            description: 'Explore the magnificent ancient temples of Cambodia, a UNESCO World Heritage site.',
+            image: 'images/temples/temple1.jpg',
+            type: 'temple'
+        },
+        {
+            name: 'Kyoto Temples, Japan',
+            category: 'Cultural Temples',
+            description: 'Immerse yourself in the rich cultural heritage of Japan through its ancient temples and shrines.',
+            image: 'images/temples/temple2.jpg',
+            type: 'temple'
+        }
+    ];
+
+    // Open search overlay
+    searchBtn.addEventListener('click', () => {
+        searchOverlay.classList.add('active');
+        searchInput.focus();
+        document.body.style.overflow = 'hidden';
+    });
+
+    // Close search overlay
+    const closeSearchOverlay = () => {
+        searchOverlay.classList.remove('active');
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        document.body.style.overflow = '';
+    };
+
+    closeSearch.addEventListener('click', closeSearchOverlay);
+
+    // Close on overlay click
+    searchOverlay.addEventListener('click', (e) => {
+        if (e.target === searchOverlay) {
+            closeSearchOverlay();
+        }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+            closeSearchOverlay();
+        }
+    });
+
+    // Search functionality
+    const performSearch = (query) => {
+        if (!query.trim()) {
+            searchResults.innerHTML = '';
+            return;
+        }
+
+        const filteredDestinations = destinations.filter(destination => {
+            const searchTerm = query.toLowerCase();
+            return (
+                destination.name.toLowerCase().includes(searchTerm) ||
+                destination.category.toLowerCase().includes(searchTerm) ||
+                destination.description.toLowerCase().includes(searchTerm) ||
+                destination.type.toLowerCase().includes(searchTerm)
+            );
+        });
+
+        displaySearchResults(filteredDestinations);
+    };
+
+    // Display search results
+    const displaySearchResults = (results) => {
+        if (results.length === 0) {
+            searchResults.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <p>No destinations found matching your search.</p>
+                    <p>Try searching for "beach", "temple", "adventure", or specific destinations.</p>
+                </div>
+            `;
+            return;
+        }
+
+        const resultsHTML = results.map(destination => `
+            <div class="search-result-item" onclick="scrollToDestination('${destination.name}')">
+                <img src="${destination.image}" alt="${destination.name}" loading="lazy">
+                <div class="search-result-info">
+                    <h4>${destination.name}</h4>
+                    <p>${destination.category}</p>
+                    <p>${destination.description.substring(0, 80)}...</p>
+                </div>
+            </div>
+        `).join('');
+
+        searchResults.innerHTML = resultsHTML;
+    };
+
+    // Handle search form submission
+    searchForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        performSearch(searchInput.value);
+    });
+
+    // Real-time search as user types
+    let searchTimeout;
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            performSearch(e.target.value);
+        }, 300);
+    });
+
+    // Make scrollToDestination function global
+    window.scrollToDestination = (destinationName) => {
+        closeSearchOverlay();
+        
+        // Find the destination card and scroll to it
+        const destinationCards = document.querySelectorAll('.destination-card');
+        destinationCards.forEach(card => {
+            const title = card.querySelector('h3');
+            if (title && title.textContent.includes(destinationName)) {
+                card.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+                
+                // Add a highlight effect
+                card.style.boxShadow = '0 0 20px rgba(52, 152, 219, 0.5)';
+                setTimeout(() => {
+                    card.style.boxShadow = '';
+                }, 2000);
+            }
+        });
+    };
+};
+
 // Initialize all features
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
@@ -217,4 +389,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavbarScroll();
     initLazyLoading();
     initScrollAnimations();
+    initSearch();
 }); 
